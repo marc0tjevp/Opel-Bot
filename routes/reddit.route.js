@@ -13,8 +13,9 @@ routes.post("/", (req, res) => {
       name: author,
     })
     .setDescription(content)
-    .setThumbnail(imageUrl)
     .setTimestamp();
+
+  if (imageUrl) exampleEmbed.setThumbnail(imageUrl);
 
   console.dir(req.body);
 
