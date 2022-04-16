@@ -21,7 +21,7 @@ routes.post("/", (req, res) => {
   console.dir(req.body);
 
   client.channels.cache
-    .get(`962049203650064385`)
+    .get(`591972341467316224`)
     .send({ embeds: [exampleEmbed] });
 
   return res.status(200).end();
