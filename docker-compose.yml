@@ -2,8 +2,8 @@ version: '2'
 services:
   bot:
     build: .
-    ports:
-      - '8080:8080'
+    expose:
+      - 80
     environment:
       VIRTUAL_HOST: bot.cloudpotato.nl
       LETSENCRYPT_HOST: bot.cloudpotato.nl
