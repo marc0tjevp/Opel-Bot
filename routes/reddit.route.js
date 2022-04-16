@@ -1,7 +1,7 @@
 const routes = require("express").Router();
 
 routes.post("/", (req, res) => {
-  console.dir(req.body);
+  return res.status(200).json(req.body).end();
 });
 
 module.exports = routes;
