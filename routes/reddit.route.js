@@ -1,5 +1,5 @@
 const routes = require("express").Router();
-const client = require("../index");
+const client = require("../bot");
 
 routes.post("/", (req, res) => {
   console.dir(client);
