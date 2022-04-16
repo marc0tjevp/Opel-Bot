@@ -1,5 +1,5 @@
 const routes = require("express").Router();
-const sendMessage = require("../index").sendMessage;
+const sendMessage = require("../index.js");
 
 routes.post("/", (req, res) => {
   sendMessage(req.body);
