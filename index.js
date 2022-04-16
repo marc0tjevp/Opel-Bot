@@ -29,3 +29,11 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.login(process.env.TOKEN);
+
+const sendMessage = (message) => {
+  client.channels.cache.get(`962049203650064385`).send(message);
+};
+
+module.exports = {
+  sendMessage,
+};
