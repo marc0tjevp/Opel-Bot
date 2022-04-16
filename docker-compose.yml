@@ -1,0 +1,15 @@
+version: '2'
+services:
+  bot:
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+      VIRTUAL_HOST: bot.cloudpotato.nl
+      LETSENCRYPT_HOST: bot.cloudpotato.nl
+      LETSENCRYPT_EMAIL: marc0tjevp@gmail.com
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
