@@ -16,7 +16,7 @@ routes.post("/", (req, res) => {
     .setTimestamp();
 
   if (imageUrl !== "https://ifttt.com/images/no_image_card.png")
-    exampleEmbed.setThumbnail(imageUrl);
+    exampleEmbed.setImage(imageUrl);
 
   console.dir(req.body);
 
