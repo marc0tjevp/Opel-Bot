@@ -3,7 +3,7 @@ const routes = require("express").Router();
 const client = require("../bot");
 
 routes.post("/", (req, res) => {
-  const { title, imageUrl, content, postUrl, author } = req.body;
+  const { title, imageUrl, content, postUrl, author, subreddit } = req.body;
 
   const exampleEmbed = new MessageEmbed()
     .setColor("#0099ff")
@@ -13,6 +13,7 @@ routes.post("/", (req, res) => {
       name: author,
     })
     .setDescription(content)
+    .setFooter({ text: `Posted on ${subreddit}` })
     .setTimestamp();
 
   if (imageUrl !== "https://ifttt.com/images/no_image_card.png")
