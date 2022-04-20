@@ -23,6 +23,69 @@ client.on("interactionCreate", async (interaction) => {
 
     interaction.reply({ embeds: [embed], ephemeral: true });
   }
+
+  // BEST-CAR
+  if (interaction.commandName === "best-car") {
+    const models = [
+      "Adam",
+      "Admiral",
+      "Agila",
+      "Ampera",
+      "Ampera-e",
+      "Antara",
+      "Arena",
+      "Ascona",
+      "Astra",
+      "Astravan",
+      "Bedford Blitz",
+      "Blitz",
+      "Calibra",
+      "Campo",
+      "Cascada",
+      "Chevette",
+      "Combo",
+      "Commodore",
+      "Corsa",
+      "Corsavan",
+      "Crossland",
+      "Diplomat",
+      "Frontera",
+      "GT",
+      "Insignia",
+      "Kadett",
+      "Kapitän",
+      "Karl",
+      "Manta",
+      "Meriva",
+      "Mokka",
+      "Monterey",
+      "Monza",
+      "Movano",
+      "Olympia Rekord",
+      "Olympia",
+      "Omega",
+      "P4",
+      "RAK",
+      "RAK2",
+      "Regent",
+      "Rekord",
+      "Senator",
+      "Signum",
+      "Sintra",
+      "Speedster",
+      "Super 6",
+      "Tigra",
+      "Vectra",
+      "Vivaro Tour",
+      "Vivaro",
+      "Zafira Tourer",
+      "Zafira",
+    ];
+
+    const random = Math.floor(Math.random() * models.length);
+
+    await interaction.reply(models[random]);
+  }
 });
 
 client.login(process.env.TOKEN);
