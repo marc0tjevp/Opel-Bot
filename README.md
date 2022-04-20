@@ -12,10 +12,19 @@ New Reddit posts on certain subreddits and new RSS feed articles from Opel Post 
 
 Create an .env file in the root of the folder to spin up the bot with the following variables:
 
-```
-TOKEN=yourapptoken
-CLIENT_ID=yourappclientid
-GUILD_ID=serverid
-PORT=expressport
-NEWS_CHANNEL=channelid
+```env
+# Serving Port
+PORT=<Express Serving Port>
+
+# Discord
+TOKEN=<Discord App Token>
+CLIENT_ID=<Discord App Client ID>
+GUILD_ID=<Discord Server ID>
+
+# Channels
+NEWS_CHANNEL=<Discord Server Channel ID>
+
+# Docker Compose
+HOST=<Express Hosting Domain>
+EMAIL=<Your Email Address>
 ```
