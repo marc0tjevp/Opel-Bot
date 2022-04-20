@@ -1,3 +1,7 @@
+<p align="center">
+  <img style="width:150px;" src="assets/bot.png" />
+</p>
+
 # Opel Bot
 
 Simple Discord bot that handles webhooks for the Opel-Vauxhall server.
