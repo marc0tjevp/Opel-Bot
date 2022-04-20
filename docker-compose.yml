@@ -5,9 +5,9 @@ services:
     expose:
       - 80
     environment:
-      VIRTUAL_HOST: bot.cloudpotato.nl
-      LETSENCRYPT_HOST: bot.cloudpotato.nl
-      LETSENCRYPT_EMAIL: marc0tjevp@gmail.com
+      VIRTUAL_HOST: ${HOST}
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
 
 networks:
   default:
