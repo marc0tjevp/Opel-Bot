@@ -1,30 +1,35 @@
 const { MessageEmbed } = require("discord.js");
 const routes = require("express").Router();
+
 const client = require("../bot");
 
 routes.post("/", (req, res) => {
   const { title, imageUrl, content, postUrl, author, subreddit } = req.body;
 
-  const exampleEmbed = new MessageEmbed()
+  if (!title) return res.status(412).end();
+
+  const newsArticleEmbed = new MessageEmbed()
     .setColor("#0099ff")
     .setTitle(title)
     .setURL(postUrl)
-    .setAuthor({
-      name: author,
-    })
-    .setDescription(content)
-    .setFooter({ text: `Posted on ${subreddit}` })
     .setTimestamp();
 
   if (imageUrl !== "https://ifttt.com/images/no_image_card.png")
-    exampleEmbed.setImage(imageUrl);
+    newsArticleEmbed.setImage(imageUrl);
+  if (author)
+    newsArticleEmbed.setAuthor({
+      name: author,
+    });
+  if (content) newsArticleEmbed.setDescription(content);
+  if (subreddit) newsArticleEmbed.setFooter({ text: `Posted on ${subreddit}` });
 
   console.dir(req.body);
 
   client.channels.cache
-    .get(`591972341467316224`)
-    .send({ embeds: [exampleEmbed] });
+    .get(process.env.NEWS_CHANNEL)
+    .send({ embeds: [newsArticleEmbed] });
 
+  // Let IFTTT know the webhook was handled
   return res.status(200).end();
 });
 
