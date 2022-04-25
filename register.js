@@ -1,5 +1,7 @@
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+
+import logger from "./logger/index.js";
 
 const commands = [
   {
@@ -20,7 +22,7 @@ const rest = new REST({ version: "9" }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log("Started refreshing application (/) commands.");
+    logger.info("Started refreshing application (/) commands.");
 
     await rest.put(
       Routes.applicationGuildCommands(
@@ -32,8 +34,8 @@ const rest = new REST({ version: "9" }).setToken(process.env.TOKEN);
       }
     );
 
-    console.log("Successfully reloaded application (/) commands.");
+    logger.info("Successfully reloaded application (/) commands.");
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 })();

@@ -1,5 +1,5 @@
-require("dotenv").config();
+import {} from "dotenv/config";
 
-require("./register");
-require("./bot");
-require("./server");
+import "./register.js";
+import "./bot.js";
+import "./server.js";

@@ -1,7 +1,9 @@
-const { MessageEmbed } = require("discord.js");
-const routes = require("express").Router();
+import { MessageEmbed } from "discord.js";
 
-const client = require("../bot");
+import express from "express";
+const routes = express.Router();
+
+import client from "../bot.js";
 
 routes.post("/", (req, res) => {
   const { title, imageUrl, content, postUrl, author, subreddit } = req.body;
@@ -33,4 +35,4 @@ routes.post("/", (req, res) => {
   return res.status(200).end();
 });
 
-module.exports = routes;
+export default routes;

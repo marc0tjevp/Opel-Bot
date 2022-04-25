@@ -1,33 +1,37 @@
-const { Client, Intents } = require("discord.js");
+// Modules
+import { Client, Intents, MessageEmbed } from "discord.js";
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+// Logger
+import logger from "./logger/index.js";
+
 // Commands
-const cmds = require("./commands/cmds");
-const bestcar = require("./commands/best-car");
+import { runPing } from "./commands/ping.js";
+import { runCmds } from "./commands/cmds.js";
+import { runBestCar } from "./commands/best-car.js";
 
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  logger.info(`Logged in as ${client.user.tag}!`);
 });
 
 client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) return;
+  logger.info(`Received command ${interaction.commandName}`);
 
-  // PING
-  if (interaction.commandName === "ping") {
-    await interaction.reply("Pong!");
+  if (!interaction.isCommand()) {
+    logger.warning(
+      `Received command ${interaction.commandName}, but it's not registered`
+    );
+    return;
   }
 
-  // CMDS
-  if (interaction.commandName === "cmds") {
-    await cmds.run(interaction);
-  }
-
-  // BEST-CAR
-  if (interaction.commandName === "best-car") {
-    await bestcar.run(interaction);
-  }
+  if (interaction.commandName === "ping")
+    await runPing(interaction, logger, MessageEmbed);
+  if (interaction.commandName === "cmds")
+    await runCmds(interaction, logger, MessageEmbed);
+  if (interaction.commandName === "best-car")
+    await runBestCar(interaction, logger, MessageEmbed);
 });
 
 client.login(process.env.TOKEN);
 
-module.exports = client;
+export default client;

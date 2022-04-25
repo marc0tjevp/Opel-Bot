@@ -1,4 +1,4 @@
-async function run(interaction) {
+export async function runBestCar(interaction, logger, MessageEmbed) {
   const models = [
     "Adam",
     "Admiral",
@@ -56,9 +56,5 @@ async function run(interaction) {
   ];
 
   const random = Math.floor(Math.random() * models.length);
-  await interaction.reply(models[random]);
+  await interaction.reply(models[random]).catch((error) => logger.error(error));
 }
-
-module.exports = {
-  run,
-};

@@ -1,6 +1,7 @@
 {
   "name": "opel-bot",
   "version": "0.0.1",
+  "type": "module",
   "description": "Opel-Vauxhal Server Bot",
   "main": "index.js",
   "scripts": {
@@ -15,6 +16,7 @@
     "discord-api-types": "^0.31.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "winston": "^3.7.2"
   }
 }

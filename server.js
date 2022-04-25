@@ -1,16 +1,18 @@
-const express = require("express");
-const bodyParser = require('body-parser');
-const routes = require("./routes/routes");
+import express from "express";
+import json from "body-parser";
+import routes from "./routes/routes.js";
+import logger from "./logger/index.js";
 
 const port = process.env.PORT;
 const app = express();
 
-module.exports = app;
+export default app;
 
 // Accept JSON
+app.use(express.json());
 app.use(
-  bodyParser.json({
-    extended: true
+  express.urlencoded({
+    extended: true,
   })
 );
 
@@ -19,5 +21,5 @@ app.use("/api", routes);
 
 // Listen on port
 const server = app.listen(port, () => {
-  console.log(`Started Express: Port ${server.address().port}`);
+  logger.info(`Started Express: Port ${server.address().port}`);
 });
