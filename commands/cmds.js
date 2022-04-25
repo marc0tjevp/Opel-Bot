@@ -7,7 +7,7 @@ async function run(interaction) {
     .addFields({ name: "Is you alive?", value: "`ping`" })
     .addFields({ name: "Your'e looking at it", value: "`cmds`" });
 
-    await interaction.reply({ embeds: [commandResponse], ephemeral: true });
+  await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
 module.exports = {
