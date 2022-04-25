@@ -3,7 +3,7 @@ import { Client, Intents, MessageEmbed } from "discord.js";
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 // Logger
-import logger from "./logger/index.js";
+import logger from "../logger/index.js";
 
 // Commands
 import { runPing } from "./commands/ping.js";

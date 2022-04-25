@@ -3,7 +3,9 @@ import { MessageEmbed } from "discord.js";
 import express from "express";
 const routes = express.Router();
 
-import client from "../bot.js";
+// TODO: Don't import
+import client from "../../bot/bot.js";
+import logger from "../../logger/index.js";
 
 routes.post("/", (req, res) => {
   const { title, imageUrl, content, postUrl, author, subreddit } = req.body;
@@ -25,13 +27,16 @@ routes.post("/", (req, res) => {
   if (content) newsArticleEmbed.setDescription(content);
   if (subreddit) newsArticleEmbed.setFooter({ text: `Posted on ${subreddit}` });
 
-  console.dir(req.body);
+  logger.info(JSON.stringify(req.body));
 
   client.channels.cache
     .get(process.env.NEWS_CHANNEL)
-    .send({ embeds: [newsArticleEmbed] });
+    .send({ embeds: [newsArticleEmbed] })
+    .catch((error) => {
+      logger.error(error);
+      return res.status(500).end();
+    });
 
-  // Let IFTTT know the webhook was handled
   return res.status(200).end();
 });
 

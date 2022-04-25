@@ -1,5 +1,5 @@
 import {} from "dotenv/config";
 
-import "./register.js";
-import "./bot.js";
-import "./server.js";
+import "./src/bot/register.js";
+import "./src/bot/bot.js";
+import "./src/api/server.js";
