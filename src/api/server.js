@@ -1,13 +1,14 @@
 import express from "express";
 import routes from "./routes/routes.js";
 import logger from "../logger/index.js";
+import rawParser from "./util/raw-parser.js"
 
 const port = process.env.PORT;
 const app = express();
 
 export default app;
 
-// Accept JSON
+app.use(rawParser);
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -15,7 +16,7 @@ app.use(
   })
 );
 
-// Temporary way to find out which provider is sending invalid json
+// Error handling
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     logger.error(`${err}`);
